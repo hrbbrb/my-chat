@@ -4,6 +4,7 @@ import { TextInput } from './TextInput';
 
 export class Login extends Component {
     state = { email: "", password: "", displayName: "", register: false };
+
     render() {
         return (
             <div className="login">
@@ -45,13 +46,13 @@ export class Login extends Component {
 
     changeDisplayedEmail(input: string) {
         
-        if (this.state.register === false) {
+    //    if (this.state.register === false) {
             if (input.toUpperCase() === "P2MJBW") {
                 console.log(input);
-                this.setState({ email: input, displayName: "Adrian" });
+                this.setState({ displayName: "Adrian" });
                 this.forceUpdate()
             }
-        }
+      //  }
         this.setState({ email: input });
         
     }
