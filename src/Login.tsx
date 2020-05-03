@@ -9,18 +9,18 @@ export class Login extends Component {
             <div className="login">
                 <img src="logo512.png" width="256" />
 
+                <TextInput
+                    type="email" placeholder="Email (someone@example.com)"
+                    value={this.state.email}
+                    autofocus={true} 
+                    onChange={e => this.changeDisplayedEmail(e)}
+                    onEnter={() => this.onClick()} />
+
                 {this.state.register && <TextInput
                     type="text" placeholder="Display Name (Agent Smith)"
                     value={this.state.displayName}
                     onChange={e => this.setState({ displayName: e })}
                     onEnter={() => this.onClick()} />}
-
-                <TextInput
-                    type="email" placeholder="Email (someone@example.com)"
-                    value={this.state.email}
-                    onChange={e => this.changeDisplayedEmail(e)}
-                    onEnter={() => this.onClick()}
-                    autofocus={true} />
 
                 <TextInput
                     type="password" placeholder="Password"
@@ -44,9 +44,11 @@ export class Login extends Component {
     }
 
     changeDisplayedEmail(input: string) {
+        
         if (this.state.register === false) {
             if (input.toUpperCase() === "P2MJBW") {
-                this.setState({ displayName: "Adrian" });
+                console.log(input);
+                this.setState({ email: input, displayName: "Adrian" });
                 this.forceUpdate()
             }
         }
@@ -67,7 +69,7 @@ export class Login extends Component {
                 type: "login", email: this.state.email, password: this.state.password,
                 staySignedIn: false
             });
-            console.log(this.state.email + this.state.password);
+            
         }
     }
 }
