@@ -16,6 +16,7 @@ export class RightPane extends Component<{ conversation?: ConversationDto, onBac
     componentWillUnmount() {
         proxy.removeAllEventListener(this);
     }
+    
     onSend(text: string) {
         proxy.sendPacket({
             type: "message", channelId: this.props.conversation!.channelId, referenceTo: 0
@@ -28,7 +29,6 @@ export class RightPane extends Component<{ conversation?: ConversationDto, onBac
             <div className="right-pane column">
                 {this.props.conversation &&
                     <>
-                        
                         <div className="conversation-header row">
                             <button type="button" className="only-narrow"
                                 onClick={() => this.props.onBack()}>Back</button>
